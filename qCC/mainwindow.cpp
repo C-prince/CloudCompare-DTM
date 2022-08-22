@@ -10239,6 +10239,7 @@ void MainWindow::on3DViewActivated(QMdiSubWindow* mdiWin)
 	ccGLWindow* win = mdiWin ? GLWindowFromWidget(mdiWin->widget()) : nullptr;
 	if (win)
 	{
+		mdiWin->setWindowFlag(Qt::FramelessWindowHint);
 		updateViewModePopUpMenu(win);
 		updatePivotVisibilityPopUpMenu(win);
 
