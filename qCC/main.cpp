@@ -51,6 +51,9 @@
 #include "ccPluginInterface.h"
 #include "ccPluginManager.h"
 
+//Qribbon
+#include "QRibbon.h"
+
 #ifdef USE_VLD
 #include <vld.h>
 #endif
@@ -185,6 +188,7 @@ int main(int argc, char **argv)
 			return EXIT_FAILURE;
 		}
 		mainWindow->initPlugins();
+		QRibbon::install(mainWindow);
 		mainWindow->show();
 		QApplication::processEvents();
 

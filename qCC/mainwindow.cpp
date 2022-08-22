@@ -157,6 +157,9 @@
 #include <iostream>
 #include <random>
 
+//Qribbon
+#include "QRibbon.h"
+
 //global static pointer (as there should only be one instance of MainWindow!)
 static MainWindow* s_instance  = nullptr;
 
