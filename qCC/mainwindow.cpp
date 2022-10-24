@@ -212,7 +212,7 @@ MainWindow::MainWindow()
 {
 	m_UI->setupUi( this );
 
-	setWindowTitle(QStringLiteral("CloudCompare v") + ccApp->versionLongStr(false));
+	setWindowTitle(QStringLiteral("异形复合材料精准修型平台 v") + ccApp->versionLongStr(false));
 	
 	m_pluginUIManager = new ccPluginUIManager( this, this );
 	

@@ -16,14 +16,4 @@ if ( PLUGIN_TEST_STANDARD )
 	
 	# set dependencies to necessary libraries
 	# target_link_libraries( ${PROJECT_NAME} LIB1 )
-
-    find_package(PCL REQUIRED)
-
-    link_directories( ${PCL_LIBRARY_DIRS} )
-    add_definitions( ${PCL_DEFINITIONS} )
-    target_link_libraries( ${PROJECT_NAME} ${PCL_LIBRARIES})
-    set_property( TARGET ${PROJECT_NAME} APPEND PROPERTY COMPILE_DEFINITIONS LP_PCL_PATCH_ENABLED )
-    include( ExportPCLDlls.cmake )
-    export_PCL_dlls( ${CLOUDCOMPARE_DEST_FOLDER} )
-
 endif()
