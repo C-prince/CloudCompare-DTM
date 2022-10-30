@@ -11,7 +11,7 @@
 //#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the          #
 //#  GNU General Public License for more details.                          #
 //#                                                                        #
-//#                    COPYRIGHT: CloudCompare project                     #
+//#                    COPYRIGHT: DigitalTwinManufacture project                     #
 //#                                                                        #
 //##########################################################################
 
@@ -273,7 +273,7 @@ CC_FILE_ERROR PcdFilter::loadFile(const QString& filename, ccHObject& container,
 		ccPointCloud* ccCloud = pcl2cc::Convert(*inputCloud);
 		if (!ccCloud)
 		{
-			ccLog::Warning("[PCL] An error occurred while converting PCD cloud to CloudCompare cloud!");
+			ccLog::Warning("[PCL] An error occurred while converting PCD cloud to DigitalTwinManufacture cloud!");
 			return CC_FERR_CONSOLE_ERROR;
 		}
 		

@@ -11,7 +11,7 @@
 //#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the          #
 //#  GNU General Public License for more details.                          #
 //#                                                                        #
-//#          COPYRIGHT: CloudCompare project                               #
+//#          COPYRIGHT: DigitalTwinManufacture project                               #
 //#                                                                        #
 //##########################################################################
 
@@ -68,7 +68,7 @@ void ccTranslationManager::loadTranslation(QString language)
 
 void ccTranslationManager::populateMenu(QMenu* menu, const QString& pathToTranslationFiles)
 {
-	const LanguageList languageList = availableLanguages(QStringLiteral("CloudCompare"), pathToTranslationFiles);
+	const LanguageList languageList = availableLanguages(QStringLiteral("DigitalTwinManufacture"), pathToTranslationFiles);
 
 	QActionGroup* group = new QActionGroup(menu);
 	group->setExclusive(true);
@@ -128,7 +128,7 @@ ccTranslationManager::LanguageList ccTranslationManager::availableLanguages(cons
 	const QString     filter = QStringLiteral("%1_*.qm").arg(appName);
 	const QStringList fileNames = dir.entryList({ filter });
 
-	// e.g. File name is "CloudCompare_es_AR.qm"
+	// e.g. File name is "DigitalTwinManufacture_es_AR.qm"
 	//	Regexp grabs "es_AR" in the var "localeStr" (used to set our locale using QLocale)
 	//	and if there is a country code (e.g. "AR"), capture that in "countryCode" (used for menu item)
 	QRegularExpression regExp(QStringLiteral("%1_(?<localeStr>.{2}(_(?<countryCode>.{2}))?).*.qm").arg(appName));
@@ -189,5 +189,5 @@ void ccTranslationManager::setLanguagePref(const QString &languageCode)
 
 	QMessageBox::information(	nullptr,
 								tr("Language Change"),
-								tr("Language change will take effect when CloudCompare is restarted") );
+								tr("Language change will take effect when DigitalTwinManufacture is restarted") );
 }

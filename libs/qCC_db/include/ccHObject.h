@@ -24,7 +24,7 @@
 
 class QIcon;
 
-//! Hierarchical CloudCompare Object
+//! Hierarchical DigitalTwinManufacture Object
 class QCC_DB_LIB_API ccHObject : public ccObject, public ccDrawableObject
 {
 public: //construction

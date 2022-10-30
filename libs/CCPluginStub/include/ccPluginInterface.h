@@ -143,4 +143,4 @@ protected:
 
 Q_DECLARE_METATYPE(const ccPluginInterface *);
 
-Q_DECLARE_INTERFACE(ccPluginInterface, "cccorp.cloudcompare.ccPluginInterface/3.2")
+Q_DECLARE_INTERFACE(ccPluginInterface, "cccorp.digitaltwinmanufacture.ccPluginInterface/3.2")

@@ -11,7 +11,7 @@
 //#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the          #
 //#  GNU General Public License for more details.                          #
 //#                                                                        #
-//#          COPYRIGHT: CloudCompare project                               #
+//#          COPYRIGHT: DigitalTwinManufacture project                               #
 //#                                                                        #
 //##########################################################################
 
@@ -47,7 +47,7 @@
 #include <ccPersistentSettings.h>
 
 #if (QT_VERSION < QT_VERSION_CHECK(5, 5, 0))
-#error CloudCompare does not support versions of Qt prior to 5.5
+#error DigitalTwinManufacture does not support versions of Qt prior to 5.5
 #endif
 
 void ccApplicationBase::InitOpenGL()
@@ -138,7 +138,7 @@ ccApplicationBase::ccApplicationBase(int& argc, char** argv, bool isCommandLine,
 	ccPluginManager::Get().setPaths(m_pluginPaths);
 
 	ccTranslationManager::Get().registerTranslatorFile(QStringLiteral("qt"), m_translationPath);
-	ccTranslationManager::Get().registerTranslatorFile(QStringLiteral("CloudCompare"), m_translationPath);
+	ccTranslationManager::Get().registerTranslatorFile(QStringLiteral("DigitalTwinManufacture"), m_translationPath);
 	ccTranslationManager::Get().loadTranslations();
 
 	connect(this, &ccApplicationBase::aboutToQuit, [=]() { ccMaterial::ReleaseTextures(); });
@@ -209,7 +209,7 @@ void ccApplicationBase::setupPaths()
 
 	m_pluginPaths << (bundleDir.absolutePath() + "/ccPlugins");
 	m_shaderPath = (bundleDir.absolutePath() + "/shaders");
-	m_translationPath = (bundleDir.absolutePath() + "/qCC/translations");
+	m_translationPath = (bundleDir.absolutePath() + "/qDTM/translations");
 #else
 	m_shaderPath = (bundleDir.absolutePath() + "/Shaders");
 	m_translationPath = (bundleDir.absolutePath() + "/translations");
@@ -226,16 +226,16 @@ void ccApplicationBase::setupPaths()
 	{
 		theDir.cdUp();
 
-		m_pluginPaths << (theDir.absolutePath() + "/lib/cloudcompare/plugins");
-		m_shaderPath = (theDir.absolutePath() + "/share/cloudcompare/shaders");
-		m_translationPath = (theDir.absolutePath() + "/share/cloudcompare/translations");
+		m_pluginPaths << (theDir.absolutePath() + "/lib/digitaltwinmanufacture/plugins");
+		m_shaderPath = (theDir.absolutePath() + "/share/digitaltwinmanufacture/shaders");
+		m_translationPath = (theDir.absolutePath() + "/share/digitaltwinmanufacture/translations");
 	}
 	else
 	{
 		// Choose a reasonable default to look in
-		m_pluginPaths << "/usr/lib/cloudcompare/plugins";
-		m_shaderPath = "/usr/share/cloudcompare/shaders";
-		m_translationPath = "/usr/share/cloudcompare/translations";
+		m_pluginPaths << "/usr/lib/digitaltwinmanufacture/plugins";
+		m_shaderPath = "/usr/share/digitaltwinmanufacture/shaders";
+		m_translationPath = "/usr/share/digitaltwinmanufacture/translations";
 	}
 #else
 	#warning Need to specify the shader path for this OS.

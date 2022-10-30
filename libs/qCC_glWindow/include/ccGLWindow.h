@@ -23,7 +23,7 @@
 #include <ccGenericGLDisplay.h>
 #include <ccGLUtils.h>
 
-//qCC
+//qDTM
 #include "ccGuiParameters.h"
 
 //Qt

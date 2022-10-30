@@ -45,4 +45,4 @@ public:
 Q_DECLARE_METATYPE(ccGLPluginInterface *);
 
 Q_DECLARE_INTERFACE(ccGLPluginInterface,
-                    "cccorp.cloudcompare.ccGLFilterPluginInterface/1.4")
+                    "cccorp.digitaltwinmanufacture.ccGLFilterPluginInterface/1.4")

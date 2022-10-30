@@ -24,7 +24,7 @@
 //qCC_db
 #include <ccHObject.h>
 
-//qCC
+//qDTM
 #include "ccDefaultPluginInterface.h"
 #include "ccMainAppInterface.h"
 
@@ -57,7 +57,7 @@ public:
 	CC_PLUGIN_TYPE getType() const override { return CC_STD_PLUGIN; }
 
 	//! Sets application entry point
-	/** Called just after plugin creation by qCC
+	/** Called just after plugin creation by qDTM
 	**/
 	virtual void setMainAppInterface(ccMainAppInterface* app)
 	{
@@ -102,4 +102,4 @@ protected:
 
 Q_DECLARE_METATYPE(const ccStdPluginInterface *);
 
-Q_DECLARE_INTERFACE(ccStdPluginInterface,"cccorp.cloudcompare.ccStdPluginInterface/1.5")
+Q_DECLARE_INTERFACE(ccStdPluginInterface,"cccorp.digitaltwinmanufacture.ccStdPluginInterface/1.5")

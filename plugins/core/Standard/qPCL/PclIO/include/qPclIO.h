@@ -14,7 +14,7 @@
 //#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the          #
 //#  GNU General Public License for more details.                          #
 //#                                                                        #
-//#                    COPYRIGHT: CloudCompare project                     #
+//#                    COPYRIGHT: DigitalTwinManufacture project                     #
 //#                                                                        #
 //##########################################################################
 
@@ -26,7 +26,7 @@ class qPclIO : public QObject, public ccIOPluginInterface
 	Q_OBJECT
 	Q_INTERFACES( ccPluginInterface ccIOPluginInterface )
 	
-	Q_PLUGIN_METADATA( IID "cccorp.cloudcompare.plugin.qPclIO" FILE "../info.json" )
+	Q_PLUGIN_METADATA( IID "cccorp.digitaltwinmanufacture.plugin.qPclIO" FILE "../info.json" )
 
 public:
 

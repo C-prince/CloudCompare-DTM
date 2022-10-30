@@ -21,14 +21,14 @@
 #include "FileIOFilter.h"
 
 
-//! CloudCompare dedicated binary point cloud I/O filter
+//! DigitalTwinManufacture dedicated binary point cloud I/O filter
 class QCC_IO_LIB_API BinFilter : public FileIOFilter
 {
 public:
 	BinFilter();
 	
 	//static accessors
-	static inline QString GetFileFilter() { return "CloudCompare entities (*.bin)"; }
+	static inline QString GetFileFilter() { return "DigitalTwinManufacture entities (*.bin)"; }
 	static inline QString GetDefaultExtension() { return "bin"; }
 
 	//inherited from FileIOFilter

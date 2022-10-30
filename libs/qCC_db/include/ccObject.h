@@ -79,7 +79,7 @@ enum CC_OBJECT_FLAG {	//CC_UNUSED			= 1, //DGM: not used anymore (former CC_FATH
 //! Type of object type flags (64 bits)
 using CC_CLASS_ENUM = int64_t;
 
-//! CloudCompare object type flags
+//! DigitalTwinManufacture object type flags
 namespace CC_TYPES
 {
 	enum : CC_CLASS_ENUM {
@@ -171,7 +171,7 @@ protected:
 	unsigned m_lastUniqueID;
 };
 
-//! Generic "CloudCompare Object" template
+//! Generic "DigitalTwinManufacture Object" template
 class QCC_DB_LIB_API ccObject : public ccSerializableObject
 {
 public:

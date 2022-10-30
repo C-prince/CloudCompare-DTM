@@ -59,7 +59,7 @@ public:
 	/** Overlay dialogs are displayed in the central MDI area, above the 3D views.
 	The position (pos) is defined relatively to the MDI area (as one of its 4 corners).
 	And it is automatically updated when the main window is moved or resized.
-	Registered dialogs are automatically released when CloudCompare stops.
+	Registered dialogs are automatically released when DigitalTwinManufacture stops.
 
 	Notes:
 	- it may be necessary to call 'updateOverlayDialogsPlacement' after calling this method

@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.10 )
 
-project( CloudCompareProjects )
+project( DigitalTwinManufactureProjects )
 
 # One shouldn't generate the BUILD project directly in the SOURCES folder!
 if ( ${CMAKE_CURRENT_BINARY_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR} )
@@ -21,7 +21,7 @@ include( DeployQt )
 option( OPTION_BUILD_CCVIEWER "Check to compile CCViewer project" ON )
 
 # Quad buffer stereo support
-option( OPTION_GL_QUAD_BUFFER_SUPPORT "Check to compile CloudCompare and ccViewer with Quad Buffer support" OFF )
+option( OPTION_GL_QUAD_BUFFER_SUPPORT "Check to compile DigitalTwinManufacture and ccViewer with Quad Buffer support" OFF )
 
 if ( OPTION_GL_QUAD_BUFFER_SUPPORT )
     # Add the define for all libs and applications
@@ -39,9 +39,9 @@ set( CMAKE_DEBUG_POSTFIX "d" )
 
 
 # Define target folders
-# (now that ccViewer can have its own plugins, qCC and ccViewer must fall in separate folders!
+# (now that ccViewer can have its own plugins, qDTM and ccViewer must fall in separate folders!
 if(WIN32 OR APPLE) 
-	set( CLOUDCOMPARE_DEST_FOLDER CloudCompare )
+	set( CLOUDCOMPARE_DEST_FOLDER DigitalTwinManufacture )
 	set( CCVIEWER_DEST_FOLDER ccViewer )
 	if (OPTION_GL_QUAD_BUFFER_SUPPORT)
 		set ( CLOUDCOMPARE_DEST_FOLDER ${CLOUDCOMPARE_DEST_FOLDER}Stereo )
@@ -59,10 +59,10 @@ if( WIN32 )
         list( APPEND INSTALL_DESTINATIONS ${CCVIEWER_DEST_FOLDER} )
 	endif()
 elseif( UNIX AND NOT APPLE )
-	# RPATH Linux/Unix: (dynamic) libs are put in $prefix/$lib/cloudcompare,
-	# since they are only used by qCC/ccViewer
+	# RPATH Linux/Unix: (dynamic) libs are put in $prefix/$lib/digitaltwinmanufacture,
+	# since they are only used by qDTM/ccViewer
 	include( GNUInstallDirs )
-	set( LINUX_INSTALL_SHARED_DESTINATION "${CMAKE_INSTALL_FULL_LIBDIR}/cloudcompare" )
+	set( LINUX_INSTALL_SHARED_DESTINATION "${CMAKE_INSTALL_FULL_LIBDIR}/digitaltwinmanufacture" )
 	set( CMAKE_INSTALL_RPATH ${LINUX_INSTALL_SHARED_DESTINATION} )
 	set( INSTALL_DESTINATIONS ${CMAKE_INSTALL_PREFIX})
 endif()
@@ -77,14 +77,14 @@ include( CMakeExternalLibs )
 # Contrib. libraries (mainly for I/O)
 include( AllSupport )
 
-# Internal libs used by both CloudCompare & ccViewer
+# Internal libs used by both DigitalTwinManufacture & ccViewer
 add_subdirectory( libs )
 
 # Plugins
 add_subdirectory( plugins )
 
-# qCC
-add_subdirectory( qCC )
+# qDTM
+add_subdirectory( qDTM )
 
 # CCViewer
 if( OPTION_BUILD_CCVIEWER )

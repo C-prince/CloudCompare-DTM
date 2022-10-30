@@ -17,7 +17,7 @@
 
 #include "ccRenderingTools.h"
 
-//qCC
+//qDTM
 #include "ccGLWindow.h"
 
 //qCC_db

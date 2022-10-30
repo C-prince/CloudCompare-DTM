@@ -25,7 +25,7 @@ class qStepCADImport : public QObject, public ccIOPluginInterface
 	Q_OBJECT
 	Q_INTERFACES( ccPluginInterface ccIOPluginInterface )
 	
-	Q_PLUGIN_METADATA(IID "cccorp.cloudcompare.plugin.qStepCADImport" FILE "../info.json")
+	Q_PLUGIN_METADATA(IID "cccorp.digitaltwinmanufacture.plugin.qStepCADImport" FILE "../info.json")
 	
 public:
 	//! Default constructor

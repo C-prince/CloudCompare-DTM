@@ -24,7 +24,7 @@
 //CCCoreLib
 #include <CCPlatform.h>
 
-//qCC
+//qDTM
 #include <ccMainAppInterface.h>
 
 //Qt

@@ -1,15 +1,15 @@
-CloudCompare Version History
+DigitalTwinManufacture Version History
 ============================
 
 v2.12.4 (Kyiv) - (14/07/2022)
 ----------------------
 
 - Bug fixes:
-	- CloudCompare 2.12.X (X<4) could miss some triangles when computing the Cloud-to-Mesh distances (resulting in slightly overestimated distances)
-	- CloudCompare would still apply the Global Shift even though it was rejected by the user (which is a bad idea ;). But the entity
+	- DigitalTwinManufacture 2.12.X (X<4) could miss some triangles when computing the Cloud-to-Mesh distances (resulting in slightly overestimated distances)
+	- DigitalTwinManufacture would still apply the Global Shift even though it was rejected by the user (which is a bad idea ;). But the entity
 		Global Shift would then be (0, 0, 0), resulting in the loss of the original coordinate system.
 	- the scale in the lower-right part of the 3D view could have the wrong length (if the height of the window is larger than its width)
-	- FBX: CloudCompare couldn't properly load the materials (textures) of meshes with quads
+	- FBX: DigitalTwinManufacture couldn't properly load the materials (textures) of meshes with quads
 	- the Compass plugin was exporting large coordinates with a too small precision
 	- the command line could ignore the input global shift (set with -GLOBAL_SHIFT) if it was not sufficient
 		to make the points coordinates small enough. This was not consistent with the previous behavior.
@@ -19,7 +19,7 @@ v2.12.3 (Kyiv) - (13/06/2022)
 ----------------------
 
 - Bug fixes:
-	- CloudCompare would still apply the Global Shift even though it was rejected by the user (which is a bad idea ;). But the entity
+	- DigitalTwinManufacture would still apply the Global Shift even though it was rejected by the user (which is a bad idea ;). But the entity
 		Global Shift would then be (0, 0, 0), resulting in the loss of the original coordinate system.
 	- the scale in the lower-right part of the 3D view could have the wrong length (if the height of the window is larger than its width)
 
@@ -48,7 +48,7 @@ v2.12.1 (Kyiv) - (07/05/2022)
 		- the number of grid cells is now displayed (next to the grid size)
 		- the number of non-empty cells is now displayed (next to the cloud name and size)
 
-	- Most of the progress dialogs of CloudCompare should not steal the focus anymore (when loard multiple files in the background for instance)
+	- Most of the progress dialogs of DigitalTwinManufacture should not steal the focus anymore (when loard multiple files in the background for instance)
 
 	- Segmentation tool:
 		- the icons are now visually disabled (grayed out) while drawing a polyline. Keyboard shortcuts are still working.
@@ -77,24 +77,24 @@ v2.12.0 (Kyiv) - (30/03/2022)
 	- qCloudLayers (by Wiggins Tech - https://www.wigginstech.com/)
 		- manual classification of point clouds (with ASPRS classes by default, but can be customized / extended to any class values)
 		- Developed by Neurodat (https://neurodat.com/contact-us/)
-		- see https://www.cloudcompare.org/doc/wiki/index.php?title=QCloudLayers_(plugin)
+		- see https://www.digitaltwinmanufacture.org/doc/wiki/index.php?title=QCloudLayers_(plugin)
 	- PCL > Fast Global Registration (https://github.com/isl-org/FastGlobalRegistration)
 		- automatic registration of point clouds (with normals) with no initial rough alignment
 		- Based on: Q.-Y. Zhou, J. Park, and V. Koltun, "Fast Global Registration", ECCV, 2016
-		- see https://www.cloudcompare.org/doc/wiki/index.php?title=Fast_Global_Registration
+		- see https://www.digitaltwinmanufacture.org/doc/wiki/index.php?title=Fast_Global_Registration
 	- MPlane (by AIT - Austrian Institute of Technology - https://www.ait.ac.at/)
 		- to perform normal distance measurements against a defined plane
-		- see https://www.cloudcompare.org/doc/wiki/index.php?title=MPlane_(plugin)
+		- see https://www.digitaltwinmanufacture.org/doc/wiki/index.php?title=MPlane_(plugin)
 	- Colorimetric Segmenter (by University of Nantes Graduate School of Engineering / Taglabs)
 		- color-based segmentation of point clouds (see https://gitlab.univ-nantes.fr/E164955Z/ptrans)
-		- see https://www.cloudcompare.org/doc/wiki/index.php?title=Colorimetric_Segmenter_(plugin)
+		- see https://www.digitaltwinmanufacture.org/doc/wiki/index.php?title=Colorimetric_Segmenter_(plugin)
 	- Masonry Segmentation (Historic Digital Survey - https://cyberbuild.eng.ed.ac.uk/projects/historic-digital-survey)
 		- segmentation of dense point clouds of masonry structures into their individual stones (see: https://github.com/CyberbuildLab/masonry-cc)
-		- see https://www.cloudcompare.org/doc/wiki/index.php?title=Masonry_Segmentation_(plugin)
+		- see https://www.digitaltwinmanufacture.org/doc/wiki/index.php?title=Masonry_Segmentation_(plugin)
 	- qMeshBoolean
 		- Boolean operations on meshes, based on libigl (https://libigl.github.io/)
 		- Slower, but supposedly more robust than Cork
-		- see https://www.cloudcompare.org/doc/wiki/index.php?title=Mesh_Boolean_(plugin)
+		- see https://www.digitaltwinmanufacture.org/doc/wiki/index.php?title=Mesh_Boolean_(plugin)
 	- STEP I/O filter (by Raphael Marc, EDF R&D)
 		- to load STEP files (as a single mesh for now)
 		- based on Open Cascade (https://www.opencascade.com/)
@@ -241,9 +241,9 @@ v2.12.0 (Kyiv) - (30/03/2022)
 	- minimal LAS scale suggested by CC was sometimes too small, potentially triggering a PDAL exception
 	- when loading raster files, GDAL can sometimes report wrong min and max altitudes. This would then let CC think that invalid pixels were
 		present. And when telling CC to keep these invalid points, their altitude would be replaced by a weird/random value...
-	- CloudCompare was reporting truncated (integer) dip and dip direction values instead of rounded values
+	- DigitalTwinManufacture was reporting truncated (integer) dip and dip direction values instead of rounded values
 	- SHP files
-		- CloudCompare was not able to read shapefiles with missing measurements (while this field is generaly optional for polylines, polygons and point clouds)
+		- DigitalTwinManufacture was not able to read shapefiles with missing measurements (while this field is generaly optional for polylines, polygons and point clouds)
 		- the SHP I/O filter was writing the local bounding-box in the file header instead of the global one (if the saved entities were shifted)
 	- PLY files with point elements containing a 'list' property would be considered as face elements (preventing the user from loading the cloud)
 		- It is now possible to load such PLY files if the 'list' is composed of floating point values
@@ -306,7 +306,7 @@ v2.11.0 (Anoia) - 14/06/2020
 	- Command line:
 		- '-H_EXPORT_FMT' added to select format for hierarchy objects exported
 		- The PCV tool can now be accessed via the command line:
-			- Option '-PCV' (see https://www.cloudcompare.org/doc/wiki/index.php?title=Command_line_mode for sub-options)
+			- Option '-PCV' (see https://www.digitaltwinmanufacture.org/doc/wiki/index.php?title=Command_line_mode for sub-options)
 			- Can be called on any number of clouds or meshes
 			- (the tool was already accessible in V2.10, but in a very limited way)
 		- RANSAC plugin support added, all parameters below are optional and can be added in any order, and will work on all clouds opened and already loaded when called
@@ -349,7 +349,7 @@ v2.11.0 (Anoia) - 14/06/2020
 		 - Rotation center can be set to either the object center, or the polyline/plane normal.
 
 - Improvements
-	- CloudCompare now handles RGBA colors for points, mesh vertices, text, and labels
+	- DigitalTwinManufacture now handles RGBA colors for points, mesh vertices, text, and labels
 		- partial ability to display these elements with some transparency (warning: points and triangles are not depth-sorted yet - display of clouds and meshes might not be very nice ;))
 		- default materials and colors (Display > Display settings) now have an editable 'alpha' channel
 		- the 'Edit > Colors > Set unique' and 'Edit > Colors > Colorize' tools also have an editable 'alpha' channel
@@ -390,7 +390,7 @@ v2.11.0 (Anoia) - 14/06/2020
 		- points are now exclusively segmented inside/outside the frustrum
 	- Plugins:
 		- plugins may now be enabled/disabled in the plugin info window
-		- to take effect, CloudCompare must be restarted
+		- to take effect, DigitalTwinManufacture must be restarted
 		- all plugins are still available on the command line
 	- PCD now supports loading more field types (16 bit signed and unsigned, 32 bit unsigned, 64 bit floating point)
 	- OBJ files:
@@ -434,7 +434,7 @@ v2.11.0 (Anoia) - 14/06/2020
 		- new stereo parameters (screen/display size, distance to screen, and eye separation)
 	- SBF files
 		- format slightly updated to accomodate with scalar fields 'shift' (backward compatibiltiy maintained)
-		- format descritpion is here: https://www.cloudcompare.org/doc/wiki/index.php?title=SBF
+		- format descritpion is here: https://www.digitaltwinmanufacture.org/doc/wiki/index.php?title=SBF
 	- Others:
 		- CC now saves the radius (parameter) after computing normals (as meta-data associated to the cloud)
 		- stereogram tool of the Facets plugin now uses the new 'High contrast' color scale by default
@@ -473,7 +473,7 @@ v2.11.0 (Anoia) - 14/06/2020
 	- SRS (Spatial Reference System) information could be lost when loading LAS files
 	- The cartesian bounding-box of exported E57 files was wrongly expressed in the file-level coordinate system (instead of the local one)
 	- Data could be lost when merging two clouds with FWF data
-	- When VBOs were activated with an ATI card, CloudCompare could crash (because ATI only supports 32bit aligned VBOs :p)
+	- When VBOs were activated with an ATI card, DigitalTwinManufacture could crash (because ATI only supports 32bit aligned VBOs :p)
 	- The LAS 1.3/1.4 filter was not compressing files with a minor case 'laz' extension :(
 	- The iteration stop criteria has been changed in the CSF plugin to fix a small bug
 	- Point picking on meshes: picking points on triangles that were partially outside of the frustum would lead to the wrong point being picked (or no point picked)
@@ -530,7 +530,7 @@ v2.10.2 (Zephyrus) - 24/02/2019
 
 
 - macOS Note
-  - I (Andy) had to update ffmpeg, which is used by the animation plugin, for this patch release. Normally I would wait for 2.11, but homebrew changed their policies and started including everything in their build, so I can no longer use it. The good news is that compiling ffmpeg myself and statically linking shaves about 30 MB off the size of CloudCompare.app...
+  - I (Andy) had to update ffmpeg, which is used by the animation plugin, for this patch release. Normally I would wait for 2.11, but homebrew changed their policies and started including everything in their build, so I can no longer use it. The good news is that compiling ffmpeg myself and statically linking shaves about 30 MB off the size of DigitalTwinManufacture.app...
   - it has been reported that this fixes a potential crash in ffmpeg's libavutil.56.dylib
 
 v2.10.1 (Zephyrus) - 01/16/2019
@@ -572,7 +572,7 @@ v2.10 (Zephyrus) - 01/06/2019
 			* Brazilian Portuguese (partial)
 			* French (very partial)
 			* Russian (partial)
-		- volunteers are welcome: https://www.cloudcompare.org/forum/viewtopic.php?t=1444
+		- volunteers are welcome: https://www.digitaltwinmanufacture.org/forum/viewtopic.php?t=1444
 
 - enhancements:
 
@@ -592,12 +592,12 @@ v2.10 (Zephyrus) - 01/06/2019
 		- then load 2 files (cloud 1 and cloud2)
 		- optionally load a 3rd cloud that will be used as core points
 		- and eventually call the -M3C2 option with the parameter file as argument:
-			CloudCompare -O cloud1 -O cloud2 (-O core_points) -M3C2 parameters_file
+			DigitalTwinManufacture -O cloud1 -O cloud2 (-O core_points) -M3C2 parameters_file
 		- new option to use the core points cloud normals (if any)
 
 	* The Canupo plugin is now open-source!
 		- Thanks (once again) to Dimitri Lague for this great contribution
-		- the code is here: https://github.com/CloudCompare/CloudCompare/tree/master/plugins/core/qCanupo
+		- the code is here: https://github.com/DigitalTwinManufacture/DigitalTwinManufacture/tree/master/plugins/core/qCanupo
 
 	* The "Classify" option of the Canupo plugin can now be called from the command line:
 		- you'll need a trained classifier (.prm file)
@@ -607,7 +607,7 @@ v2.10 (Zephyrus) - 01/06/2019
 			* (use the 'SET_ACTIVE_SF' after loading a cloud to set the active scalar field if
 				you want it to be used to refine the classification)
 		- syntax:
-			CloudCompare -O cloud1 ... -O cloudN -CANUPO_CLASSIFY (-USE_CONFIDENCE 0.9) classifier.prm
+			DigitalTwinManufacture -O cloud1 ... -O cloudN -CANUPO_CLASSIFY (-USE_CONFIDENCE 0.9) classifier.prm
 
 	* Labels can now be imported from ASCII files:
 		- new column role in the ASCII loading dialog: "Labels"
@@ -665,11 +665,11 @@ v2.10 (Zephyrus) - 01/06/2019
 		- the PCV plugin can now be applied on several clouds (batch mode)
 
 	* LAS I/O:
-		- CloudCompare can now read and save extra dimensions (for any file version) - see https://github.com/CloudCompare/CloudCompare/pull/666
+		- DigitalTwinManufacture can now read and save extra dimensions (for any file version) - see https://github.com/DigitalTwinManufacture/DigitalTwinManufacture/pull/666
 
 	* E57:
 		- the E57 plugin now uses [libE57Format] (https://github.com/asmaloney/libE57Format) which is a fork of the old E57RefImpl
-		- if you compile CloudCompare with the E57 plugin, you will need to use this new lib and change some CMake options to point at it - specifically **OPTION_USE_LIBE57FORMAT** and **LIBE57FORMAT_INSTALL_DIR**
+		- if you compile DigitalTwinManufacture with the E57 plugin, you will need to use this new lib and change some CMake options to point at it - specifically **OPTION_USE_LIBE57FORMAT** and **LIBE57FORMAT_INSTALL_DIR**
 		- the E57 plugin is now available on macOS
 
 	* RDS (Riegl)
@@ -754,7 +754,7 @@ v2.9 (Omnia) - 10/22/2017
 
 	* New plugin: qCompass
 		- structural geology toolbox for the interpretation and analysis of virtual outcrop models (by Sam Thiele)
-		- see http://www.cloudcompare.org/doc/wiki/index.php?title=Compass_(plugin)
+		- see http://www.digitaltwinmanufacture.org/doc/wiki/index.php?title=Compass_(plugin)
 
 	* 3D view pivot management:
 		- new option to position the pivot point automatically on the point currently at the screen center (dynamic update)
@@ -789,7 +789,7 @@ v2.9 (Omnia) - 10/22/2017
 	* When a picking operation is active, the ESC key will cancel it.
 
 	* qBroom plugin:
-		- now has a wiki documentation: http://www.cloudcompare.org/doc/wiki/index.php?title=Virtual_broom_(plugin)
+		- now has a wiki documentation: http://www.digitaltwinmanufacture.org/doc/wiki/index.php?title=Virtual_broom_(plugin)
 
 	* qAnimation plugin:
 		- new output option 'zoom' (alternative to the existing 'super resolution' option)
@@ -1185,7 +1185,7 @@ v2.7.0 - 04/22/2016
 		- Now exports images with the active (default) color scale
 
 	* Support for the Oculus Rift device
-		- new option of the 'Stereo' mode (you have to use the 'Stereo' version of CloudCompare)
+		- new option of the 'Stereo' mode (you have to use the 'Stereo' version of DigitalTwinManufacture)
 		- development is still in 'alpha' state
 		- units must be expressed in meters
 		- works best with a 3D mouse
@@ -1451,13 +1451,13 @@ v2.6.2 10/08/2015
 		- the user can set the default width for the contour lines
 		- the contour lines can be colored (according to the layer associated scalar field settings)
 	* SOR filter:
-		- the PCL Statistical Outlier filter (for noise cleaning) has been integrated in CloudCompare
+		- the PCL Statistical Outlier filter (for noise cleaning) has been integrated in DigitalTwinManufacture
 		- can be accessed via 'Tools > Clean > SOR filter'
 		- its icon has been moved to the main toolbar
 		- the tool is now accessible through the command line (see below)
 		- the other noise filtering tool has been renamed ('Tools > Clean > Noise filter')
 	* Display:
-		- CloudCompare now supports 'Level Of Detail' (LoD) display for big clouds
+		- DigitalTwinManufacture now supports 'Level Of Detail' (LoD) display for big clouds
 		- if enabled, the clouds are now displayed first at a low octree level when moved
 			and are then regularly refined when the user doesn't interact with them.
 		- the user can now specify the minimal number of points and the minimal number of
@@ -1618,8 +1618,8 @@ v2.6.1 02/20/2015
 	* SHP file I/O filter
 		- supports polylines (input/output) and clouds (input/output) for now
 		- input: if the SHP file contains 2D polylines and some numerical fields in the associated DBF
-			file, CloudCompare will let the user choose one of those field as 'altitude' for the polylines
-		- output: if the user wants to save 3D polylines, CloudCompare let him choose to export
+			file, DigitalTwinManufacture will let the user choose one of those field as 'altitude' for the polylines
+		- output: if the user wants to save 3D polylines, DigitalTwinManufacture let him choose to export
 			them as 2D polylines, and also to export their altitude (assuming it's constant) as a 'height'
 			field in the associated DBF file
 	* CSV Matrix I/O filter
@@ -1648,7 +1648,7 @@ v2.6.1 02/20/2015
 		- the user can export (and import) individual color scales as XML files
 		- the color of new steps is now interpolated from the existing color ramp instead of being white by default
 	* CPU-based point picking
-		- CloudCompare now performs point picking (or triangle picking) with a CPU-based approach
+		- DigitalTwinManufacture now performs point picking (or triangle picking) with a CPU-based approach
 			instead of relying on OpenGL. The process should be faster, especially on low-end
 			graphic cards (Intel chipsets, etc.)
 
@@ -1717,7 +1717,7 @@ v2.6.1 02/20/2015
 		- New option '-REMOVE_ALL_SFS': to remove all scalar fields (from all loaded entities, i.e. clouds or meshes)
 		- New option '-CBANDING': to apply color 'banding' (the user must also specify the dimension and the frequency)
 		- the 'COMPUTE_PTX_NORMALS' option has been renamed 'COMPUTE_NORMALS' (as it can now be used for both PTX and DP files)
-		- Default behavior of some commands has slightly changed (see http://www.cloudcompare.org/doc/wiki/index.php?title=CommandLine)
+		- Default behavior of some commands has slightly changed (see http://www.digitaltwinmanufacture.org/doc/wiki/index.php?title=CommandLine)
 	* SF Arithmetic:
 		- new operator 'INT' (integer part) to extract the integer part of scalar values
 		- new operator 'INVERSE' (1/x)
@@ -1757,7 +1757,7 @@ v2.6.1 02/20/2015
 	- FBX I/O filter: the transformation of meshes was considered as a column-wise matrix while it was in fact row-wise
 	- STL vertices merging was sometimes failing with the 64 bits version as it was using a too small
 		threshold distance (the bounding-box dimensions divided by 2^21!)
-	- when comparing a cloud and a mesh, the best octree level guessed by CloudCompare could go much higher than 9
+	- when comparing a cloud and a mesh, the best octree level guessed by DigitalTwinManufacture could go much higher than 9
 		(with the 64 bits version which has now a maximum octree level of 21 by default). However this could cause
 		a much too high memory consumption and eventually a crash.
 	- when the order of entities was changed in the DB tree, the display was not updated right away
@@ -1791,7 +1791,7 @@ v2.6.0 10/24/2014
 		- displays in the console the total number of each type of edges (normal/border/non-manifold)
 			as well as the total number of edges
 	* Mesh volume measurement tool: 'Edit > Mesh > Measure volume'
-		- the result is only valid if the mesh is closed (CloudCompare will warn you if it's not the case
+		- the result is only valid if the mesh is closed (DigitalTwinManufacture will warn you if it's not the case
 			and you can check that yourself with the new 'Flag vertices by type' method (see above).
 	* Meshes can now be exported in DXF (Autocad) files
 	* New 'Display' options:
@@ -1917,7 +1917,7 @@ v2.6.0 10/24/2014
 			After '-O' (open file) use the '-GLOBAL_SHIFT' option and:
 				* either 'AUTO' to let CC handle the big coordinates automatically
 				* or the 3 values of the shift vector to apply
-			Example: 'CloudCompare -O -GLOBAL_SHIFT AUTO myfile.asc'
+			Example: 'DigitalTwinManufacture -O -GLOBAL_SHIFT AUTO myfile.asc'
 		- New option '-COMPUTE_PTX_NORMALS' to force CC to compute normals when loading PTX files
 		- Default timestamp for output files now incorporates seconds (so as to avoid overwriting
 			files generated too quickly)
@@ -2000,7 +2000,7 @@ v2.5.5 07/06/2014
 		- the registration translation can be constrained along one or several dimensions (Tx, Ty or Tz)
 	* Global Shift & Scale mechanism:
 		- brand new dialog (hopefully clearer)
-		- A 'global_shift_list_template.txt' file can now be found next to CloudCompare's executable file.
+		- A 'global_shift_list_template.txt' file can now be found next to DigitalTwinManufacture's executable file.
 		  The user can edit it and follow the instructions inside:
 			* this file should be renamed 'global_shift_list.txt' and it should contain 5 values per line
 			  ("name; Tx; Ty; Tz; scale;" - mind the semicolon characters)
@@ -2038,7 +2038,7 @@ v2.5.5 07/06/2014
 		- new command line option:
 			* '-SKIP [number of lines]' after '-O' to specify the number of lines that should be skipped
 		* new mechanism to detect the column type based on the header line (if any)
-			* when loading an ASCII file in CloudCompare this should set the columns type automatically
+			* when loading an ASCII file in DigitalTwinManufacture this should set the columns type automatically
 			* when loading an ASCII file from the command line this should prevent the dialog from appearing
 				(if standard names are used: X.., Y.., Z.., Nx, Ny, Nz, Normx, Normy, Normz, R, Red, G, Green, B, Blue, etc.)
 	* New option in the LAS file opening dialog:
@@ -2050,7 +2050,7 @@ v2.5.5 07/06/2014
 		- before that, especially when lots of rotations were applied to an entity, the resulting transformation matrix
 			could have had accumulated too many numerical errors resulting in a slightly shrunk cloud
 	* (Mac OS X) Fonts on "retina" displays are no longer fuzzy
-	* 3D mouse support: CloudCompare now relies on the official 3dConnexion SDK
+	* 3D mouse support: DigitalTwinManufacture now relies on the official 3dConnexion SDK
 		- wireless devices should now be handled correctly
 		- the option menu is replaced by the official/default one
 		- (support is still limited to Windows only for now)
@@ -2163,7 +2163,7 @@ v2.5.3 02/21/2014
 	* The old version is now accessible via "Tools > Other > Density > Approximate"
 		(and it simply outputs the distance to the nearest neighbor now)
 	* Command line options have been changed accordingly
-		(see http://www.cloudcompare.org/doc/wiki/index.php?title=CommandLine)
+		(see http://www.digitaltwinmanufacture.org/doc/wiki/index.php?title=CommandLine)
 - New method: "Tools > Other > Remove duplicate points"
 	* Removes duplicate points (creates a new cloud)
 - New method: "Edit > Crop"
@@ -2197,7 +2197,7 @@ v2.5.3 02/21/2014
 		- make the (bounding-box) centers of loaded entities match
 		- specify export format (clouds or meshes) as well as the extension
 		- prevent CC from automatically a timestamp as suffix for output files
-		(see the updated documentation here: http://www.cloudcompare.org/doc/wiki/index.php?title=CommandLine)
+		(see the updated documentation here: http://www.digitaltwinmanufacture.org/doc/wiki/index.php?title=CommandLine)
 	* ccViewer now supports GL filters (i.e. 'shader' plugins: qEDL and qSSAO)
 	* The GL filter banner (yellow) is now smaller, and is displayed at the top of the 3D view
 		(it doesn't hide the scale anymore!)
@@ -2212,7 +2212,7 @@ v2.5.3 02/21/2014
 	* Cross section tool: the box position can now be edited ('advanced' button)
 
 - Other:
-	* ATOM feed enabled on the forum (http://www.cloudcompare.org/forum/)
+	* ATOM feed enabled on the forum (http://www.digitaltwinmanufacture.org/forum/)
 		(use the native ATOM support on IE or Firefox, or install an ATOM feed reader app
 		on Chrome, e.g. "RSS Feed Reader")
 
@@ -2222,7 +2222,7 @@ v2.5.3 02/21/2014
 	* The default value for scaling of the 'shift on load' dialog was 0.
 	* A bug in the (spatial) sub-sampling tool has been fixed (could make CC crash)
 	* The cloud/cloud distance computation dialog was always computing the octrees twice!
-	* DXF files generated by CloudCompare were corrupted (bug from dxflib)
+	* DXF files generated by DigitalTwinManufacture were corrupted (bug from dxflib)
 	* The Z coordinate of polyline vertices exported in DXF format was wrongly replaced by the Y coordinate
 	* Vertical profiles generated by the qSRA plugin were all the same
 	* In some cases no SF or invalid SF were generated by the Rasterize tool (point cloud export)
@@ -2246,7 +2246,7 @@ v2.5.2 12/19/2013
 		of generating a regularly sampled cloud using the grid cell's centers)
 	- the tool can now export the resulting grid as a true multi-band raster (geotiff)
 	- menu entry renamed: "Tools > Projection > Rasterize (Height grid generation)"
-- It is now possible to compile CloudCompare with 64 bits floating point values
+- It is now possible to compile DigitalTwinManufacture with 64 bits floating point values
 	(i.e 64 bits 'doubles' instead of 32 bits 'floats') for coordinates and/or scalars.
 	It doubles the memory consumption but it increases a lot the accuracy.
 	Moreover there's absolutely no loss of information when importing/exporting clouds
@@ -2336,7 +2336,7 @@ v2.5.2 12/19/2013
 		* the components are automatically 'selected' in order to clearly identify them without random colors
 			(the 'random colors' checkbox is not selected by default anymore)
 		* the components are sorted by their size (starting from the biggest)
-	- new command lines options (see http://www.cloudcompare.org/doc/wiki/index.php?title=CommandLine):
+	- new command lines options (see http://www.digitaltwinmanufacture.org/doc/wiki/index.php?title=CommandLine):
 		* C2C_DIST: cloud to cloud distance computation
 		* C2M_DIST: cloud to mesh distance computation
 		* SAMPLE_MESH: to sample points on a mesh
@@ -2356,7 +2356,7 @@ v2.5.2 12/19/2013
 		recenter and rescale the entity was wrong.
 	- a call to the 'Zoom on selected entities' tool on entities not displayed in the active window would be ignored.
 	- the 'camera link' tool would sometimes make CC crash (windows were playing ping-pong ;).
-	- CloudCompare can now recover from errors encountered in OBJ normals or texture coordinates (normals or textures
+	- DigitalTwinManufacture can now recover from errors encountered in OBJ normals or texture coordinates (normals or textures
 		are simply discarded)
 
 v2.5.1 10/19/2013
@@ -2596,7 +2596,7 @@ v2.4 03/10/2013
 - New command lines for ccViewer:
 	* '-top' to make the window 'always on top'
 	* '-win [X] [Y] [W] [H]' to set the position (X,Y) and size (W,H) of the window
-- New icons for CloudCompare and ccViewer
+- New icons for DigitalTwinManufacture and ccViewer
 - PCL (Point Cloud Library) 'PCD' files can now be opened without the qPCL plugin
 	* only works with ascii and uncompressed binary versions for the moment
 
@@ -2654,7 +2654,7 @@ v2.4 12/16/2012
 - Introducing a new alignment/registration method: "Align (point pairs picking)"
 	* aligns clouds by interactively picking 'equivalent' points in both clouds (3 pairs at least)
 	* replaces the old "Align (auto)" research tool in the main toolbar (same icon)
-	* more information on the wiki: http://www.cloudcompare.org/doc/wiki/index.php?title=Alignment_and_Registration
+	* more information on the wiki: http://www.digitaltwinmanufacture.org/doc/wiki/index.php?title=Alignment_and_Registration
 - Perspective mode and lights activation state are now automatically saved and restored (on the creation of a new 3D view or when CC restarts)
 - Overlay dialogs (manual segmentation and transformation, point picking, etc.) don't prevent CC from being closed anymore
 - 'Height grid generation' tool now gives more choice for the management of empty cells
@@ -2717,7 +2717,7 @@ v2.4 10/31/2012
 	* the normal index for each face vertex was missing when saving a mesh with per-vertex normals to an OBJ file.
 	(this would typically make Meshlab crash ;). Just open them with this new version of CC and overwrite them to fix them.
 	* potential crash when using the research option 'enable furthest points removal' during registration (ICP)
-    * PLY files saved by CloudCompare have (once again) field names "compatible" with MeshLab.
+    * PLY files saved by DigitalTwinManufacture have (once again) field names "compatible" with MeshLab.
 	The 'vertex_indices' field has changed to 'vertex_indexes' in the last versions of CC ... and this make Meshlab crash...
 	(I've already ranted about that before: the PLY format doesn't impose any particular field name and it's the responsibility
 	of the loader to handle that... Paraview do this wonderfully for instance ;)
@@ -2729,7 +2729,7 @@ v2.4 09/22/2012
 	radius that will be used to compute local models. One can also choose to compute a model for every points or, as an approximation,
 	to "share" local models between neighbors (faster... but noisier - in fact this was done by default before!).
 - New tools accessible in command line mode: density, roughness, curvature and SF gradient.
-	(see wiki: http://www.cloudcompare.org/doc/wiki/index.php?title=CommandLine)
+	(see wiki: http://www.digitaltwinmanufacture.org/doc/wiki/index.php?title=CommandLine)
 - When exporting a cloud to a LAS file, any scalar field named 'LAS classification' will now be handled as a proper LAS classification
 	field.
 - PCV plugin (ShadeVis-like global illumination algorithm) can now take a point cloud with normals as input. The normals will be used
@@ -2802,7 +2802,7 @@ v2.4 06/27/2012
 v2.4 06/24/2012
 ---------------
 
-- CloudCompare 64 bits version available (Windows & Linux)
+- DigitalTwinManufacture 64 bits version available (Windows & Linux)
 - Introducing BIN "V2" format (highly enhanced):
 	* almost any type of entity and their display option can be saved (all selected elements with their siblings)
 	* this format can freely evolve while keeping backward compatibility (integrated version management)
@@ -2834,7 +2834,7 @@ v2.4 06/24/2012
   * bug fix: the previous version was generating ortho-rectified images with a non constant pixel scale!
   * a 'ortho_rectification_log.txt' file is now generated along the images with relative position for each (in pixels, relatively to the first image)
   * images are now processed sequentially, and the user can choose whether they should be kept in memory or not
-  * ortho-rectification as images (on disk) is now available through command line arguments (see wiki: http://www.cloudcompare.org/doc/wiki/index.php?title=CommandLine)
+  * ortho-rectification as images (on disk) is now available through command line arguments (see wiki: http://www.digitaltwinmanufacture.org/doc/wiki/index.php?title=CommandLine)
 - Multiple clouds can now be automatically saved in multiple ASCII files
 	* select several clouds then 'Save' them as ASCII files
 	* enter a base name with an extension (hint: any occurrence of the string 'cloudname' will be replaced by each cloud name)
@@ -2859,12 +2859,12 @@ v2.4 01/04/2012
 - qPCV plugin slightly optimized
 - qHPR plugin now uses qHull V2012.1
 - qPoissonRecon now uses PoissonRecon V3 (http://www.cs.jhu.edu/~misha/Code/PoissonRecon). Works also on Linux now.
-- PLY files saved by CloudCompare now use 'properties' names compatible with MeshLab (to cope with the lack of flexibility of this - however great - tool ;)
+- PLY files saved by DigitalTwinManufacture now use 'properties' names compatible with MeshLab (to cope with the lack of flexibility of this - however great - tool ;)
 - All scalar fields associated to a cloud are now saved in PLY files (with their name as property name + prefix 'SCALAR_')
 - Bug in Delaunay 2D triangulation on least square best fitting plane fixed.
 - Crash during OBJ files loading fixed (the crash occurred when the file was referring to materials but no material file was declared)
-- The Windows release has been compiled with Visual Studio 2008. You may have to install Visual C++ 2008 Redistributable Package (x86) to launch CloudCompare.
-- Project can/should now be compiled with CMake (www.cmake.org). See http://www.cloudcompare.org/doc/wiki/index.php?title=Compilation_CMake
+- The Windows release has been compiled with Visual Studio 2008. You may have to install Visual C++ 2008 Redistributable Package (x86) to launch DigitalTwinManufacture.
+- Project can/should now be compiled with CMake (www.cmake.org). See http://www.digitaltwinmanufacture.org/doc/wiki/index.php?title=Compilation_CMake
 
 v2.3 02/14/2012
 ---------------
@@ -2888,8 +2888,8 @@ v2.3 01/28/2012
 v2.3 01/18/2012
 ---------------
 
-- Noah Snavely's Bundler output file (with 'out' extension - see http://phototour.cs.washington.edu/bundler/) can now be opened in CloudCompare.
-  CloudCompare will extract the point cloud as well as calibrated cameras information and will then try to load associated pictures.
+- Noah Snavely's Bundler output file (with 'out' extension - see http://phototour.cs.washington.edu/bundler/) can now be opened in DigitalTwinManufacture.
+  DigitalTwinManufacture will extract the point cloud as well as calibrated cameras information and will then try to load associated pictures.
 - This version should fix an issue with distance computation on Windows 7 (crash)
 
 v2.3 01/07/2012

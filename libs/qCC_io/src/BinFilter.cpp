@@ -55,7 +55,7 @@
 
 BinFilter::BinFilter()
 	: FileIOFilter( {
-					"_CloudCompare BIN Filter",
+					"_DigitalTwinManufacture BIN Filter",
 					1.0f,	// priority
 					QStringList{ "bin" },
 					"bin",
@@ -487,7 +487,7 @@ CC_FILE_ERROR BinFilter::LoadFileV2(QFile& in, ccHObject& container, int flags)
 
 	if (ccObject::GetCurrentDBVersion() < binVersion)
 	{
-		ccLog::Error("This version of CloudCompare is too old and can't load this file, sorry");
+		ccLog::Error("This version of DigitalTwinManufacture is too old and can't load this file, sorry");
 		return CC_FERR_CONSOLE_ERROR;
 	}
 

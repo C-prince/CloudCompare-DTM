@@ -29,7 +29,7 @@
 #include "ccLog.h"
 
 
-static const QString s_xmlCloudCompare( "CloudCompare" );
+static const QString s_xmlDigitalTwinManufacture( "DigitalTwinManufacture" );
 static const QString s_xmlColorScaleTitle( "ColorScale" );
 static const QString s_xmlColorScaleProperties( "Properties" );
 static const QString s_xmlColorScaleData( "Data" );
@@ -369,7 +369,7 @@ bool ccColorScale::saveAsXML(const QString& filename) const
 	stream.setAutoFormatting(true);
 	stream.writeStartDocument();
 	{
-		stream.writeStartElement(s_xmlCloudCompare);	// CloudCompare
+		stream.writeStartElement(s_xmlDigitalTwinManufacture);	// DigitalTwinManufacture
 		{
 			stream.writeStartElement(s_xmlColorScaleTitle);	// ColorScale
 			{
@@ -429,7 +429,7 @@ bool ccColorScale::saveAsXML(const QString& filename) const
 			}
 			stream.writeEndElement(); // ColorScale
 		}
-		stream.writeEndElement(); // CloudCompare
+		stream.writeEndElement(); // DigitalTwinManufacture
 	}
 	stream.writeEndDocument();
 
@@ -452,9 +452,9 @@ ccColorScale::Shared ccColorScale::LoadFromXML(const QString& filename)
 	bool error = true;
 	while (true) //fake loop for easy break
 	{
-		//expected: CloudCompare
+		//expected: DigitalTwinManufacture
 		if (	!stream.readNextStartElement()
-			||	stream.name() != s_xmlCloudCompare)
+			||	stream.name() != s_xmlDigitalTwinManufacture)
 		{
 			break;
 		}

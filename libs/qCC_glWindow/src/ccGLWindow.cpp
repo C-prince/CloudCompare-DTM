@@ -15,7 +15,7 @@
 //#                                                                        #
 //##########################################################################
 
-//qCC
+//qDTM
 #include "ccGLWindow.h"
 #include "ccRenderingTools.h"
 
@@ -4062,7 +4062,7 @@ void ccGLWindow::mouseMoveEvent(QMouseEvent *event)
 			if (!m_mouseMoved)
 			{
 				if (m_pickingMode != NO_PICKING
-					//DGM: in fact we still need to move labels in those modes below (see the 'Point Picking' tool of CloudCompare for instance)
+					//DGM: in fact we still need to move labels in those modes below (see the 'Point Picking' tool of DigitalTwinManufacture for instance)
 					//&&	m_pickingMode != POINT_PICKING
 					//&&	m_pickingMode != TRIANGLE_PICKING
 					//&&	m_pickingMode != POINT_OR_TRIANGLE_PICKING
@@ -6933,7 +6933,7 @@ void ccGLWindow::renderText(int x, int y, const QString & str, uint16_t uniqueID
 	// This adjustment and the change to x & y are to work around a crash with Qt 5.9.
 	// At the time I (Andy) could not determine if it is a bug in CC or Qt.
 	//		https://bugreports.qt.io/browse/QTBUG-61863
-	//		https://github.com/CloudCompare/CloudCompare/issues/543
+	//		https://github.com/DigitalTwinManufacture/DigitalTwinManufacture/issues/543
 	QRect textRect = QFontMetrics(font).boundingRect(str).adjusted(-1, -2, 1, 2);
 	//ccLog::Print(QString("Texture rect = (%1 ; %2) --> (%3 x %4)").arg(textRect.x()).arg(textRect.y()).arg(textRect.width()).arg(textRect.height()));
 

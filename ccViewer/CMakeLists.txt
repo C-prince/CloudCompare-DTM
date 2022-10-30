@@ -4,15 +4,15 @@ include( CMakePolicies NO_POLICY_SCOPE )
 
 include_directories( ${CloudComparePlugins_SOURCE_DIR} )
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR} )
-include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/../qCC )
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/../qDTM )
 include_directories( ${CMAKE_CURRENT_BINARY_DIR} )
 
 file( GLOB header_list *.h )
 file( GLOB source_list *.cpp )
 
 file( GLOB ui_list ui_templates/*.ui )
-file( GLOB qrc_list ../qCC/*.qrc )
-file( GLOB rc_list ../qCC/*.rc )
+file( GLOB qrc_list ../qDTM/*.qrc )
+file( GLOB rc_list ../qDTM/*.rc )
 
 qt5_wrap_ui( generated_ui_list ${ui_list} )
 qt5_add_resources( generated_qrc_list ${qrc_list} )
@@ -61,7 +61,7 @@ endif()
 if ( APPLE )
 	target_link_contrib( ${PROJECT_NAME} ${CLOUDCOMPARE_MAC_FRAMEWORK_DIR} )
 elseif( UNIX )
-	target_link_contrib( ${PROJECT_NAME} ${CMAKE_INSTALL_LIBDIR}/cloudcompare )
+	target_link_contrib( ${PROJECT_NAME} ${CMAKE_INSTALL_LIBDIR}/digitaltwinmanufacture )
 else()
 	target_link_contrib( ${PROJECT_NAME} ${CCVIEWER_DEST_FOLDER} )
 endif()
@@ -96,7 +96,7 @@ if( WIN32 )
 endif()
 
 # Install auxiliary files
-if(APPLE OR WIN32) # For Linux it's already installed in by qCC
+if(APPLE OR WIN32) # For Linux it's already installed in by qDTM
 	foreach( filename ${auxFiles} )
 		install_ext( FILES ${filename} ${CCVIEWER_DEST_FOLDER} "" )
 	endforeach()
@@ -108,8 +108,8 @@ if( APPLE )
 endif( APPLE )
 
 # Export common shader files to all install destinations
-if( WIN32 ) # For Linux it's already installed in by qCC
-	install_ext( FILES ${CMAKE_CURRENT_SOURCE_DIR}/../qCC/shaders/ColorRamp/color_ramp.frag ${CCVIEWER_DEST_FOLDER} /shaders/ColorRamp )
+if( WIN32 ) # For Linux it's already installed in by qDTM
+	install_ext( FILES ${CMAKE_CURRENT_SOURCE_DIR}/../qDTM/shaders/ColorRamp/color_ramp.frag ${CCVIEWER_DEST_FOLDER} /shaders/ColorRamp )
 endif()
 
 # Install plugins & shaders in the correct folder for each platform
@@ -122,8 +122,8 @@ if( APPLE )
 elseif( UNIX )
 	InstallPlugins(
 		TYPES "gl;io"
-		DEST_PATH "${CMAKE_INSTALL_LIBDIR}/cloudcompare/plugins"
-		SHADER_DEST_PATH share/cloudcompare/shaders
+		DEST_PATH "${CMAKE_INSTALL_LIBDIR}/digitaltwinmanufacture/plugins"
+		SHADER_DEST_PATH share/digitaltwinmanufacture/shaders
 	)
 else()
 	InstallPlugins(

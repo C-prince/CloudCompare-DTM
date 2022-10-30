@@ -39,7 +39,7 @@
 #include <QtMath>
 
 ccCameraParamEditDlg::ccCameraParamEditDlg(QWidget* parent, ccPickingHub* pickingHub)
-	: ccOverlayDialog(parent, pickingHub ? Qt::FramelessWindowHint | Qt::Tool : Qt::Tool) //pickingHub = CloudCompare / otherwise = ccViewer
+	: ccOverlayDialog(parent, pickingHub ? Qt::FramelessWindowHint | Qt::Tool : Qt::Tool) //pickingHub = DigitalTwinManufacture / otherwise = ccViewer
 	, m_pickingHub(pickingHub)
 	, m_ui( new Ui::CameraParamDlg )
 {
@@ -257,7 +257,7 @@ void ccCameraParamEditDlg::pickPointAsPivot(bool state)
 
 void ccCameraParamEditDlg::onItemPicked(const PickedItem& pi)
 {
-	//with picking hub (CloudCompare)
+	//with picking hub (DigitalTwinManufacture)
 	if (!m_associatedWin || !m_pickingHub)
 	{
 		assert(false);

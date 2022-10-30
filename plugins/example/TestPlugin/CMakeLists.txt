@@ -1,4 +1,4 @@
-# CloudCompare example for standard plugins
+# DigitalTwinManufacture example for standard plugins
 
 # REPLACE ALL 'ExamplePlugin' OCCURENCES BY YOUR PLUGIN NAME
 # AND ADAPT THE CODE BELOW TO YOUR OWN NEEDS!

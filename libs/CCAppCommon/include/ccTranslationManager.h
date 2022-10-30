@@ -12,7 +12,7 @@
 //#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the          #
 //#  GNU General Public License for more details.                          #
 //#                                                                        #
-//#          COPYRIGHT: CloudCompare project                               #
+//#          COPYRIGHT: DigitalTwinManufacture project                               #
 //#                                                                        #
 //##########################################################################
 
@@ -36,7 +36,7 @@ public:
 	//! Register a file prefix for translation files.
 	/** The files should be named <prefix>_<lang>.ts where <lang> is the 2-letter ISO 639
 		language code in lowercase.
-		 e.g. CloudCompare_fr.ts
+		 e.g. DigitalTwinManufacture_fr.ts
 		\param prefix	The prefix of the file to register
 		\param path		The path to look for the files in
 	**/

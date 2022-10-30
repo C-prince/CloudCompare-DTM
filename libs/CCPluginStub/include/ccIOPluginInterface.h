@@ -48,4 +48,4 @@ public:
 };
 
 Q_DECLARE_INTERFACE(ccIOPluginInterface,
-                    "cccorp.cloudcompare.ccIOPluginInterface/1.3")
+                    "cccorp.digitaltwinmanufacture.ccIOPluginInterface/1.3")

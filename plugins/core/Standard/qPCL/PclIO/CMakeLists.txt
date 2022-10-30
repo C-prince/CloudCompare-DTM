@@ -7,7 +7,7 @@ add_subdirectory( src )
 
 target_link_libraries( ${PROJECT_NAME} QPCL_PLUGIN_UTILS_LIB )
 
-#for ccViewer, we also have to copy the PCL dlls! (for CloudCompare they are already copied by qPCL
+#for ccViewer, we also have to copy the PCL dlls! (for DigitalTwinManufacture they are already copied by qPCL
 if( ${OPTION_BUILD_CCVIEWER} )
 
 	#import PCL dlls (if any, WIN32 only)

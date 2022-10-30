@@ -19,7 +19,7 @@
 
 #include "ccStdPluginInterface.h"
 
-//! Example qCC plugin
+//! Example qDTM plugin
 /** Replace 'ExamplePlugin' by your own plugin class name throughout and then
 	check 'ExamplePlugin.cpp' for more directions.
 
@@ -27,7 +27,7 @@
 	the name, authors, maintainers, icon, etc..
 
 	The one method you are required to implement is 'getActions'. This should
-	return all actions (QAction objects) for the plugin. CloudCompare will
+	return all actions (QAction objects) for the plugin. DigitalTwinManufacture will
 	automatically add these with their icons in the plugin toolbar and to the
 	plugin menu. If	your plugin returns	several actions, CC will create a
 	dedicated toolbar and a	sub-menu for your plugin. You are responsible for
@@ -45,7 +45,7 @@ class TestPlugin : public QObject, public ccStdPluginInterface
 	// Replace "Example" by your plugin name (IID should be unique - let's hope your plugin name is unique ;)
 	// The info.json file provides information about the plugin to the loading system and
 	// it is displayed in the plugin information dialog.
-	Q_PLUGIN_METADATA( IID "cccorp.cloudcompare.plugin.Test" FILE "../info.json" )
+	Q_PLUGIN_METADATA( IID "cccorp.digitaltwinmanufacture.plugin.Test" FILE "../info.json" )
 
 public:
 	explicit TestPlugin( QObject *parent = nullptr );
