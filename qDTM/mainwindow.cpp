@@ -148,6 +148,8 @@
 //Qt
 #include <QClipboard>
 
+#include <QProcess>
+
 //Qt UI files
 #include <ui_distanceMapDlg.h>
 #include <ui_globalShiftSettingsDlg.h>
@@ -783,6 +785,9 @@ void MainWindow::connectActions()
 	
 	//hidden
 	connect(m_UI->actionEnableVisualDebugTraces,	&QAction::triggered, this, &MainWindow::toggleVisualDebugTraces);
+
+	//¹ì¼£Éú³É
+	connect(m_UI->actionMachining_simulation,		&QAction::triggered, this, &MainWindow::doMachining_simulation);
 }
 
 void MainWindow::doActionColorize()
@@ -11141,4 +11146,13 @@ void MainWindow::doActionComparePlanes()
 	//pop-up summary
 	QMessageBox::information(this, tr("Plane comparison"), info.join("\n"));
 	forceConsoleDisplay();
+}
+
+
+void MainWindow::doMachining_simulation() {
+	QProcess process(this);
+	//QString str = QApplication::applicationDirPath();
+	QString str = "E:/Program Files/MeshLab/meshlab.exe";
+	str = "\"" + str + "\"";
+	process.startDetached(str);
 }

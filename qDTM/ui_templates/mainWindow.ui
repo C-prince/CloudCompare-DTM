@@ -39,7 +39,7 @@
      <x>0</x>
      <y>0</y>
      <width>1024</width>
-     <height>21</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -512,12 +512,19 @@
     <addaction name="menuSandBox"/>
     <addaction name="separator"/>
    </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>轨迹生成</string>
+    </property>
+    <addaction name="actionMachining_simulation"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuTools"/>
    <addaction name="menuDisplay"/>
    <addaction name="menu3DViews"/>
    <addaction name="menuHelp"/>
+   <addaction name="menu"/>
   </widget>
   <widget class="QDockWidget" name="DockableDBTree">
    <property name="minimumSize">
@@ -3137,6 +3144,15 @@ The active scalar field should have integer values.</string>
     <string>Add classification SF (shorcut to 'Add constant SF')</string>
    </property>
   </action>
+  <action name="actionMachining_simulation">
+   <property name="icon">
+    <iconset resource="../icons.qrc">
+     <normaloff>:/CC/images/RobotMaster.png</normaloff>:/CC/images/RobotMaster.png</iconset>
+   </property>
+   <property name="text">
+    <string>Machining simulation</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
@@ -3166,8 +3182,8 @@ The active scalar field should have integer values.</string>
      <y>-1</y>
     </hint>
     <hint type="destinationlabel">
-     <x>554</x>
-     <y>747</y>
+     <x>589</x>
+     <y>745</y>
     </hint>
    </hints>
   </connection>
@@ -3178,8 +3194,8 @@ The active scalar field should have integer values.</string>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>554</x>
-     <y>747</y>
+     <x>589</x>
+     <y>745</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>

@@ -543,6 +543,9 @@ private:
 	//! Adds a single value SF to the active point cloud
 	void addConstantSF(ccPointCloud* cloud, QString sfName, bool integerValue);
 
+private://调用外部程序
+	void doMachining_simulation();
+
 private: //members
 
 	//! Main UI
