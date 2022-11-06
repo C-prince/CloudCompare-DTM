@@ -545,6 +545,7 @@ private:
 
 private://调用外部程序
 	void doMachining_simulation();
+	void doIntelligentDecision();
 
 private: //members
 

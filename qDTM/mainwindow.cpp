@@ -120,6 +120,7 @@
 #include "ccWaveformDialog.h"
 #include "ccEntitySelectionDlg.h"
 #include "ccSmoothPolylineDlg.h"
+#include "dtmIntelligentDecisionDlg.h"
 
 //other
 #include "ccCropTool.h"
@@ -788,6 +789,9 @@ void MainWindow::connectActions()
 
 	//轨迹生成
 	connect(m_UI->actionMachining_simulation,		&QAction::triggered, this, &MainWindow::doMachining_simulation);
+
+	//智能决策
+	connect(m_UI->actionIntelligentDecision,		&QAction::triggered, this, &MainWindow::doIntelligentDecision);
 }
 
 void MainWindow::doActionColorize()
@@ -11155,4 +11159,9 @@ void MainWindow::doMachining_simulation() {
 	QString str = "E:/Program Files/MeshLab/meshlab.exe";
 	str = "\"" + str + "\"";
 	process.startDetached(str);
+}
+
+void MainWindow::doIntelligentDecision() {
+	dtmIntelligentDecisionDlg idDlg(this);
+	idDlg.exec();
 }
