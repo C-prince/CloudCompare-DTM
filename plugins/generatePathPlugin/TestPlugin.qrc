@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/CC/plugin/generatePathPlugin">
+        <file>images/GeneratePath.png</file>
+        <file>info.json</file>
+    </qresource>
+</RCC>
