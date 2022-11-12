@@ -163,6 +163,10 @@
 //Qribbon
 #include "QRibbon.h"
 
+//python
+#include <Python.h>
+#include <iostream>
+using namespace std;
 //global static pointer (as there should only be one instance of MainWindow!)
 static MainWindow* s_instance  = nullptr;
 
@@ -789,6 +793,8 @@ void MainWindow::connectActions()
 
 	//轨迹生成
 	connect(m_UI->actionMachining_simulation,		&QAction::triggered, this, &MainWindow::doMachining_simulation);
+	connect(m_UI->actionGenerate_Path,				&QAction::triggered, this, &MainWindow::doGeneratePath);
+	
 
 	//智能决策
 	connect(m_UI->actionIntelligentDecision,		&QAction::triggered, this, &MainWindow::doIntelligentDecision);
@@ -11165,3 +11171,53 @@ void MainWindow::doIntelligentDecision() {
 	dtmIntelligentDecisionDlg idDlg(this);
 	idDlg.exec();
 }
+
+void MainWindow::doGeneratePath() {
+	
+	Py_SetPythonHome(L"E:/lib/Anaconda3/envs/xyz");
+	Py_Initialize();
+	if (!Py_IsInitialized())
+	{
+		printf("初始化失败！");
+	
+	}
+	PyRun_SimpleString("import sys");
+	PyRun_SimpleString("sys.path.append('E:/project/DTM/CloudCompare-DTM/qDTM/py/')");
+	PyObject* pName = PyUnicode_FromString("GenPath");
+	PyObject* pModule = PyImport_Import(pName);
+	if (pModule == NULL)
+	{
+		cout << "没找到" << endl;
+	}
+	PyObject* func1 = PyObject_GetAttrString(pModule, "GenPath");
+	 
+	PyObject* tuple1 = PyTuple_New(2);
+	PyTuple_SetItem(tuple1, 0, PyUnicode_FromString("E:\\2D polygon2.stl"));
+	PyTuple_SetItem(tuple1, 1, PyLong_FromLong(5));
+	
+	PyObject* poly = PyObject_CallObject(func1, tuple1);
+	 
+	PyObject* func2 = PyObject_GetAttrString(pModule, "writeAptFile");
+	// 参数进栈  
+	PyObject* tuple2 = PyTuple_New(3);
+	PyTuple_SetItem(tuple2, 0, poly);
+	PyTuple_SetItem(tuple2, 1, PyUnicode_FromString("E:\\2D polygon2.stl"));
+	PyTuple_SetItem(tuple2, 2, PyUnicode_FromString("E:\\1.Apt"));
+	
+	PyObject_CallObject(func2, tuple2);
+	
+	Py_XDECREF(func1);
+	Py_XDECREF(func2);
+	Py_XDECREF(tuple1);
+	Py_XDECREF(tuple2);
+	Py_XDECREF(poly);
+	Py_XDECREF(pName);
+	Py_XDECREF(pModule);
+
+	Py_Finalize();
+}
+
+
+
+
+

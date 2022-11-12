@@ -4,7 +4,7 @@
 #include <QtGui>
 #include <QMessageBox>
 #include <iostream>
-#include <Python.h>
+//#include <Python.h>
 #include <pcl/io/pcd_io.h>
 #include <pcl/io/ply_io.h>
 #include <pcl/point_types.h>

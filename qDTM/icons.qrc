@@ -149,6 +149,7 @@
         <file>images/DTMlogo.png</file>
         <file>images/RobotMaster.png</file>
         <file>images/IntelligentDecision.png</file>
+        <file>images/GeneratePath.png</file>
     </qresource>
     <qresource prefix="/CC/Icons">
         <file>images/icon/cc_viewer_icon_16.png</file>

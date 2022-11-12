@@ -517,6 +517,7 @@
      <string>轨迹生成</string>
     </property>
     <addaction name="actionMachining_simulation"/>
+    <addaction name="actionGenerate_Path"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
@@ -3167,6 +3168,15 @@ The active scalar field should have integer values.</string>
    </property>
    <property name="text">
     <string>工艺参数决策</string>
+   </property>
+  </action>
+  <action name="actionGenerate_Path">
+   <property name="icon">
+    <iconset resource="../icons.qrc">
+     <normaloff>:/CC/images/GeneratePath.png</normaloff>:/CC/images/GeneratePath.png</iconset>
+   </property>
+   <property name="text">
+    <string>Generate Path</string>
    </property>
   </action>
  </widget>
