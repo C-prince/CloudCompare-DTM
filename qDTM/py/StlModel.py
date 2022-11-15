@@ -1,4 +1,4 @@
-import vtk
+#import vtk
 from GeomBase import *
 from Triangle import *
 
