@@ -158,5 +158,6 @@
         <file>images/icon/cc_icon_16.png</file>
         <file>images/icon/cc_icon_32.png</file>
         <file>images/icon/cc_icon_64.png</file>
+        <file>images/icon/B_icon.png</file>
     </qresource>
 </RCC>
