@@ -11172,8 +11172,15 @@ void MainWindow::doMachining_simulation() {
 }
 
 void MainWindow::doIntelligentDecision() {
-	dtmIntelligentDecisionDlg idDlg(this);
-	idDlg.exec();
+	QProcess process(this);
+	//QString str = QApplication::applicationDirPath();
+	QString str = "E:/project/ProcessDB/ProcessDB/bin/Debug/BookMS.exe";
+	str = "\"" + str + "\"";
+	process.startDetached(str);
+
+	//qt版决策
+	//dtmIntelligentDecisionDlg idDlg(this);
+	//idDlg.exec();
 }
 
 void MainWindow::doFTP() {
