@@ -548,6 +548,7 @@ private://调用外部程序
 
 	void doIntelligentDecision();
 	void doGeneratePath();
+	void doFTP();
 private: //members
 
 	//! Main UI

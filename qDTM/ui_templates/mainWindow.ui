@@ -525,6 +525,12 @@
     </property>
     <addaction name="actionIntelligentDecision"/>
    </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>过程监控</string>
+    </property>
+    <addaction name="actionFTP"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuTools"/>
@@ -533,6 +539,7 @@
    <addaction name="menuHelp"/>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
+   <addaction name="menu_3"/>
   </widget>
   <widget class="QDockWidget" name="DockableDBTree">
    <property name="minimumSize">
@@ -3177,6 +3184,11 @@ The active scalar field should have integer values.</string>
    </property>
    <property name="text">
     <string>Generate Path</string>
+   </property>
+  </action>
+  <action name="actionFTP">
+   <property name="text">
+    <string>指令下发</string>
    </property>
   </action>
  </widget>

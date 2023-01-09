@@ -798,6 +798,10 @@ void MainWindow::connectActions()
 
 	//智能决策
 	connect(m_UI->actionIntelligentDecision,		&QAction::triggered, this, &MainWindow::doIntelligentDecision);
+
+	//过程监控
+	connect(m_UI->actionFTP, &QAction::triggered, this, &MainWindow::doFTP);
+
 }
 
 void MainWindow::doActionColorize()
@@ -11172,55 +11176,31 @@ void MainWindow::doIntelligentDecision() {
 	idDlg.exec();
 }
 
+void MainWindow::doFTP() {
+		QProcess program(this);
+		program.start("E:\\project\\DTM\\kuka\\1.exe");
+		program.waitForFinished(100000000000);
+}
+
+
 void MainWindow::doGeneratePath() {
-
-		//指定python.exe位置
 		Py_SetPythonHome(L"D:/LenovoSoftstore/Install/Microsoft Visual Studio/Shared/Python37_64");
-		/*初始化Python解释器*/
 		Py_Initialize();
-
-
-		//设置.py文件所在位置
 		PyRun_SimpleString("import sys");
-		PyRun_SimpleString("sys.path.append('E:/project/DTM/CloudCompare-DTM/qDTM/py')");
-
-		// 载入名为test的脚本  
+		PyRun_SimpleString("sys.path.append('E:/project/DTM/CloudCompare-DTM/qDTM/py')"); 
 		PyObject* pName = PyUnicode_FromString("TEST");
 		PyObject* pModule = PyImport_Import(pName);
-
-		////传参方式2
-		//PyObject* func1 = PyObject_GetAttrString(pModule, "GenPath");
-		//PyObject* pArg1 = Py_BuildValue("(s,i)", "E:\\2D polygon2.stl", 5);
-		//PyObject* poly = PyObject_CallObject(func1, pArg1);
-		//PyObject* func2 = PyObject_GetAttrString(pModule, "writeAptFile");
-		//PyObject* tuple = PyTuple_New(3);
-		//PyTuple_SetItem(tuple, 0, poly);
-		//PyTuple_SetItem(tuple, 1, PyUnicode_FromString("E:\\2D polygon2.stl"));
-		//PyTuple_SetItem(tuple, 2, PyUnicode_FromString("E:\\2.Apt"));
-		//PyObject_CallObject(func2, tuple);  
-
-
-		// 在脚本中找到函数名为GenPath的函数  
 		PyObject* func1 = PyObject_GetAttrString(pModule, "GenPath");
-
-		// 参数进栈  
 		PyObject* tuple1 = PyTuple_New(2);
-		PyTuple_SetItem(tuple1, 0, PyUnicode_FromString("E:\\2D polygon2.stl"));
+		PyTuple_SetItem(tuple1, 0, PyUnicode_FromString("D:\\MyProgram\\DTM\\model\\demomodel\\ldzDemo\\2D polygon.stl"));
 		PyTuple_SetItem(tuple1, 1, PyLong_FromLong(5));
-		// 传参调用函数
 		PyObject* poly = PyObject_CallObject(func1, tuple1);
-
-		// 在脚本中找到函数名为writeAptFile的函数  
 		PyObject* func2 = PyObject_GetAttrString(pModule, "writeAptFile");
-		// 参数进栈  
 		PyObject* tuple2 = PyTuple_New(3);
 		PyTuple_SetItem(tuple2, 0, poly);
-		PyTuple_SetItem(tuple2, 1, PyUnicode_FromString("E:\\2D polygon2.stl"));
-		PyTuple_SetItem(tuple2, 2, PyUnicode_FromString("E:\\2.Apt"));
-		// 传参调用函数
+		PyTuple_SetItem(tuple2, 1, PyUnicode_FromString("D:\\MyProgram\\DTM\\model\\demomodel\\ldzDemo\\2D polygon.stl"));
+		PyTuple_SetItem(tuple2, 2, PyUnicode_FromString("D:\\MyProgram\\DTM\\model\\demomodel\\ldzDemo\\localPath.Apt"));
 		PyObject_CallObject(func2, tuple2);
-
-		//清理
 		Py_XDECREF(func1);
 		Py_XDECREF(func2);
 		Py_XDECREF(tuple1);
@@ -11228,7 +11208,5 @@ void MainWindow::doGeneratePath() {
 		Py_XDECREF(poly);
 		Py_XDECREF(pName);
 		Py_XDECREF(pModule);
-
-		//清理Python解释器
 		Py_Finalize();	
 }
