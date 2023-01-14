@@ -11178,7 +11178,7 @@ void MainWindow::doIntelligentDecision() {
 	str = "\"" + str + "\"";
 	process.startDetached(str);
 
-	//qtç‰ˆå†³ç­–
+	//qt°æ¾ö²ß
 	//dtmIntelligentDecisionDlg idDlg(this);
 	//idDlg.exec();
 }

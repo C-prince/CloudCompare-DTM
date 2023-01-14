@@ -361,15 +361,10 @@ class SMTP:
     def putcmd(self, cmd, args=""):
         """Send a command to the server."""
         if args == "":
-            s = cmd
+            str = '%s%s' % (cmd, CRLF)
         else:
-            s = f'{cmd} {args}'
-        if '\r' in s or '\n' in s:
-            s = s.replace('\n', '\\n').replace('\r', '\\r')
-            raise ValueError(
-                f'command and arguments contain prohibited newline characters: {s}'
-            )
-        self.send(f'{s}{CRLF}')
+            str = '%s %s%s' % (cmd, args, CRLF)
+        self.send(str)
 
     def getreply(self):
         """Get a reply from the server.

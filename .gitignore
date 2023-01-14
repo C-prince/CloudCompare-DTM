@@ -139,3 +139,5 @@ CCCoreLibExport.h
 #VS2019 default cmake build & install paths
 /out/
 plugins/private
+libs/qCC_db/extern/CGAL-5.5.1-win64-auxiliary-libraries-gmp-mpfr.zip
+libs/qCC_db/extern/CGAL-5.5.1.zip

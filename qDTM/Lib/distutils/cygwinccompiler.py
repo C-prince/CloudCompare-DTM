@@ -82,9 +82,6 @@ def get_msvcr():
         elif msc_ver == '1600':
             # VS2010 / MSVC 10.0
             return ['msvcr100']
-        elif int(msc_ver) >= 1900:
-            # VS2015 / MSVC 14.0
-            return ['msvcr140']
         else:
             raise ValueError("Unknown MS Compiler version %s " % msc_ver)
 
@@ -302,13 +299,9 @@ class Mingw32CCompiler(CygwinCCompiler):
             raise CCompilerError(
                 'Cygwin gcc cannot be used with --compiler=mingw32')
 
-        if sys.maxsize == 2**31 - 1:
-            ms_win=' -DMS_WIN32'
-        else:
-            ms_win=' -DMS_WIN64'
-        self.set_executables(compiler='gcc -O -Wall'+ms_win,
-                             compiler_so='gcc -mdll -O -Wall'+ms_win,
-                             compiler_cxx='g++ -O -Wall'+ms_win,
+        self.set_executables(compiler='gcc -O -Wall',
+                             compiler_so='gcc -mdll -O -Wall',
+                             compiler_cxx='g++ -O -Wall',
                              linker_exe='gcc',
                              linker_so='%s %s %s'
                                         % (self.linker_dll, shared_option,

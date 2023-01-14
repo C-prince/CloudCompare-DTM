@@ -76,9 +76,6 @@ scheme_chars = ('abcdefghijklmnopqrstuvwxyz'
                 '0123456789'
                 '+-.')
 
-# Unsafe bytes to be removed per WHATWG spec
-_UNSAFE_URL_BYTES_TO_REMOVE = ['\t', '\r', '\n']
-
 # XXX: Consider replacing with functools.lru_cache
 MAX_CACHE_SIZE = 20
 _parse_cache = {}
@@ -412,11 +409,6 @@ def _checknetloc(netloc):
             raise ValueError("netloc '" + netloc + "' contains invalid " +
                              "characters under NFKC normalization")
 
-def _remove_unsafe_bytes_from_url(url):
-    for b in _UNSAFE_URL_BYTES_TO_REMOVE:
-        url = url.replace(b, "")
-    return url
-
 def urlsplit(url, scheme='', allow_fragments=True):
     """Parse a URL into 5 components:
     <scheme>://<netloc>/<path>?<query>#<fragment>
@@ -424,8 +416,6 @@ def urlsplit(url, scheme='', allow_fragments=True):
     Note that we don't break the components up in smaller bits
     (e.g. netloc is a single string) and we don't expand % escapes."""
     url, scheme, _coerce_result = _coerce_args(url, scheme)
-    url = _remove_unsafe_bytes_from_url(url)
-    scheme = _remove_unsafe_bytes_from_url(scheme)
     allow_fragments = bool(allow_fragments)
     key = url, scheme, allow_fragments, type(url), type(scheme)
     cached = _parse_cache.get(key, None)
@@ -653,7 +643,7 @@ def unquote(string, encoding='utf-8', errors='replace'):
 
 
 def parse_qs(qs, keep_blank_values=False, strict_parsing=False,
-             encoding='utf-8', errors='replace', max_num_fields=None, separator='&'):
+             encoding='utf-8', errors='replace', max_num_fields=None):
     """Parse a query given as a string argument.
 
         Arguments:
@@ -677,15 +667,12 @@ def parse_qs(qs, keep_blank_values=False, strict_parsing=False,
         max_num_fields: int. If set, then throws a ValueError if there
             are more than n fields read by parse_qsl().
 
-        separator: str. The symbol to use for separating the query arguments.
-            Defaults to &.
-
         Returns a dictionary.
     """
     parsed_result = {}
     pairs = parse_qsl(qs, keep_blank_values, strict_parsing,
                       encoding=encoding, errors=errors,
-                      max_num_fields=max_num_fields, separator=separator)
+                      max_num_fields=max_num_fields)
     for name, value in pairs:
         if name in parsed_result:
             parsed_result[name].append(value)
@@ -695,7 +682,7 @@ def parse_qs(qs, keep_blank_values=False, strict_parsing=False,
 
 
 def parse_qsl(qs, keep_blank_values=False, strict_parsing=False,
-              encoding='utf-8', errors='replace', max_num_fields=None, separator='&'):
+              encoding='utf-8', errors='replace', max_num_fields=None):
     """Parse a query given as a string argument.
 
         Arguments:
@@ -718,25 +705,19 @@ def parse_qsl(qs, keep_blank_values=False, strict_parsing=False,
         max_num_fields: int. If set, then throws a ValueError
             if there are more than n fields read by parse_qsl().
 
-        separator: str. The symbol to use for separating the query arguments.
-            Defaults to &.
-
         Returns a list, as G-d intended.
     """
     qs, _coerce_result = _coerce_args(qs)
-
-    if not separator or (not isinstance(separator, (str, bytes))):
-        raise ValueError("Separator must be of type string or bytes.")
 
     # If max_num_fields is defined then check that the number of fields
     # is less than max_num_fields. This prevents a memory exhaustion DOS
     # attack via post bodies with many fields.
     if max_num_fields is not None:
-        num_fields = 1 + qs.count(separator)
+        num_fields = 1 + qs.count('&') + qs.count(';')
         if max_num_fields < num_fields:
             raise ValueError('Max number of fields exceeded')
 
-    pairs = [s1 for s1 in qs.split(separator)]
+    pairs = [s2 for s1 in qs.split('&') for s2 in s1.split(';')]
     r = []
     for name_value in pairs:
         if not name_value and not strict_parsing:

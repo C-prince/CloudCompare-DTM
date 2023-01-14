@@ -200,7 +200,6 @@ class UnixCCompiler(CCompiler):
 
                 if sys.platform == 'darwin':
                     linker = _osx_support.compiler_fixup(linker, ld_args)
-                    ld_args = ['-arch', 'x86_64'] + ld_args
 
                 self.spawn(linker + ld_args)
             except DistutilsExecError as msg:
@@ -232,7 +231,7 @@ class UnixCCompiler(CCompiler):
         # this time, there's no way to determine this information from
         # the configuration data stored in the Python installation, so
         # we use this hack.
-        compiler = os.path.basename(sysconfig.get_config_var("CC").split()[0])
+        compiler = os.path.basename(sysconfig.get_config_var("CC"))
         if sys.platform[:6] == "darwin":
             # MacOSX's linker doesn't understand the -R flag at all
             return "-L" + dir
@@ -248,12 +247,12 @@ class UnixCCompiler(CCompiler):
                 # use it anyway.  Since distutils has always passed in
                 # -Wl whenever gcc was used in the past it is probably
                 # safest to keep doing so.
-                if sysconfig.get_config_var("GNULD") == "yes" or sys.platform == 'win32':
+                if sysconfig.get_config_var("GNULD") == "yes":
                     # GNU ld needs an extra option to get a RUNPATH
                     # instead of just an RPATH.
-                    return "-Wl,-R" + dir
+                    return "-Wl,--enable-new-dtags,-R" + dir
                 else:
-                    return "-Wl,--disable-new-dtags,-R" + dir
+                    return "-Wl,-R" + dir
             else:
                 # No idea how --enable-new-dtags would be passed on to
                 # ld if this system was using GNU ld.  Don't know if a
